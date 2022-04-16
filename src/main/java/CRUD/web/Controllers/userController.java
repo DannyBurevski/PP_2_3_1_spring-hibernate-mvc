@@ -11,8 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class userController {
 
+    private UserService userService;
+
     @Autowired
-    UserService userService;
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/users")
     public ModelAndView usersPage() {
@@ -31,7 +35,7 @@ public class userController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
     public ModelAndView userEdit(@ModelAttribute("user") User user,
                                  @RequestParam(value = "action") String action) {
         ModelAndView modelAndView = new ModelAndView();
@@ -57,7 +61,7 @@ public class userController {
                                 @RequestParam(value = "action") String action) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/users");
-        if (action.equals("add")) {
+        if (action.equals("save")) {
             userService.addUser(user);
         }
         return modelAndView;
@@ -71,12 +75,14 @@ public class userController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE)
     public ModelAndView userDelete(@ModelAttribute("user") User user,
+                                   @ModelAttribute("userId") Long id,
                                    @RequestParam(value = "action") String action) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/users");
         if (action.equals("delete")) {
+            user.setId(id);
             userService.deleteUser(user);
         }
         return modelAndView;
