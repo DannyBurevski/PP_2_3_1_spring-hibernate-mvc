@@ -18,6 +18,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(value = "CRUD")
 public class PersistenceConfig {
+
     @Autowired
     private Environment env;
 

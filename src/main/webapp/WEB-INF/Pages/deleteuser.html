@@ -7,7 +7,6 @@
 </head>
 <body>
 <h2>Удалить пользователя?</h2>
-<a th:href="@{/users}">Выйти без сохранения</a>
 <p></p>
 <table>
     <tr>
@@ -41,8 +40,8 @@
         <td th:utext="${user.email}"></td>
     </tr>
 </table>
-<form th:action="@{/delete}" th:object="${user}" method="post">
-    <input type="hidden" th:field="*{id}">
+<form th:action="@{/delete/{userId}(userId=${user.id})}" th:object="${user}" th:method="POST">
+    <input type="hidden" name="_method" value="DELETE"/>
     <button type="submit" name="action" value="cancel">Отмена</button>
     <button type="submit" name="action" value="delete">Удалить</button>
 </form>

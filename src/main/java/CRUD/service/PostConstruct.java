@@ -7,8 +7,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PostConstruct {
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @javax.annotation.PostConstruct
     public void init() {
