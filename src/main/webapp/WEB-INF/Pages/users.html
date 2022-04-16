@@ -8,6 +8,7 @@
 <body>
 <h2>Юзеры</h2>
 <a th:href="@{/}">На главную</a>
+<p></p>
 <table th:border="3">
     <tr>
         <th>id</th>
@@ -27,9 +28,11 @@
         <td th:utext="${user.email}"></td>
         <td>
             <a th:href="@{/edit/{userId}(userId=${user.id})}">Редактировать </a>
-            <a th:href="@{/users/{userId}(userId=${user.id})}">Удалить</a>
+            <a th:href="@{/delete/{userId}(userId=${user.id})}">Удалить</a>
         </td>
     </tr>
 </table>
+<p></p>
+<a th:href="@{/add}">Новый пользователь</a>
 </body>
 </html>

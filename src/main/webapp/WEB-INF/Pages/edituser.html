@@ -7,18 +7,18 @@
 </head>
 <body>
 <h2>Редактирование пользователя</h2>
-<a th:href="@{/users}">Выйти без сохранения</a>
+<p></p>
 <form th:action="@{/edit}" th:object="${user}" method="post">
 <table>
     <tr>
         <td>id</td>
         <td>:</td>
-        <td th:utext="${user.id}">...</td>
+        <td><input type="number" th:field="*{id}" th:readonly="true"/></td>
     </tr>
     <tr>
         <td>Имя</td>
         <td>:</td>
-        <td><input type="text" th:field="*{firstName}" /></td>
+        <td><input type="text" th:field="*{firstName}"/></td>
     </tr>
     <tr>
         <td>Фамилия</td>
@@ -37,15 +37,16 @@
     <tr>
         <td>Телефон</td>
         <td>:</td>
-        <td><input type="text" th:field="*{phoneNo}" /></td>
+        <td><input type="tel" th:field="*{phoneNo}" /></td>
     </tr>
     <tr>
         <td>E-mail</td>
         <td>:</td>
-        <td><input type="text" th:field="*{email}" /></td>
+        <td><input type="email" th:field="*{email}" /></td>
     </tr>
 </table>
-    <input type="submit" th:value="Сохранить" />
+    <button type="submit" name="action" value="cancel">Отмена</button>
+    <button type="submit" name="action" value="save">Сохранить</button>
 </form>
 </body>
 </html>

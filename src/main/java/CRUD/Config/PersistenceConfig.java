@@ -1,8 +1,5 @@
 package CRUD.Config;
 
-import CRUD.model.Gender;
-import CRUD.model.User;
-import CRUD.service.UserService;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
@@ -13,7 +10,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -55,12 +51,4 @@ public class PersistenceConfig {
         transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
         return transactionManager;
     }
-
-//    private HibernateJpaVendorAdapter vendorAdaptor() {
-//        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-//        vendorAdapter.setShowSql(true);
-//        return vendorAdapter;
-//    }
-
-
 }

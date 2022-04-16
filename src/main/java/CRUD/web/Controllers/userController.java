@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
 public class userController {
 
@@ -24,7 +22,7 @@ public class userController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit/{userId}", method = RequestMethod.GET)
+    @GetMapping("/edit/{userId}")
     public ModelAndView userEditPage(@PathVariable("userId") Long userId) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("edituser");
@@ -34,10 +32,53 @@ public class userController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView userEdit(@ModelAttribute("user") User user) {
+    public ModelAndView userEdit(@ModelAttribute("user") User user,
+                                 @RequestParam(value = "action") String action) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/users");
-        userService.updateUser(user);
+        if (action.equals("save")) {
+            userService.updateUser(user);
+        }
+        return modelAndView;
+    }
+
+    @GetMapping(value = "/add")
+    public ModelAndView userAddPage() {
+        User newUser = new User();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("adduser");
+        modelAndView.addObject("newuser", newUser);
+        modelAndView.addObject("genders", Gender.values());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ModelAndView userAdd(@ModelAttribute("user") User user,
+                                @RequestParam(value = "action") String action) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/users");
+        if (action.equals("add")) {
+            userService.addUser(user);
+        }
+        return modelAndView;
+    }
+
+    @GetMapping("/delete/{userId}")
+    public ModelAndView userDeletePage(@PathVariable("userId") Long userId) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("deleteuser");
+        modelAndView.addObject("user", userService.getUser(userId));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ModelAndView userDelete(@ModelAttribute("user") User user,
+                                   @RequestParam(value = "action") String action) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/users");
+        if (action.equals("delete")) {
+            userService.deleteUser(user);
+        }
         return modelAndView;
     }
 

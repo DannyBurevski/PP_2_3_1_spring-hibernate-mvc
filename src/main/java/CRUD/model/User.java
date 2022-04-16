@@ -1,14 +1,6 @@
 package CRUD.model;
 
-
-import CRUD.Config.PersistenceConfig;
-import CRUD.service.UserService;
-import CRUD.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import javax.persistence.*;
-import javax.annotation.*;
 
 @Entity
 @Table(name = "users")
@@ -94,7 +86,7 @@ public class User {
 
     @Override
     public String toString() {
-        return this.getFirstName() + " " + this.getLastName() + " " + this.getGender()
+        return this.getId() + " " + this.getFirstName() + " " + this.getLastName() + " " + this.getGender()
                 + " " + this.getPhoneNo() + " " + this.getEmail();
     }
 
