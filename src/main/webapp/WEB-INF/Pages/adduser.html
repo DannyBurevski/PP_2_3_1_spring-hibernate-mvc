@@ -3,10 +3,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>New user</title>
+    <title>New Athlete</title>
 </head>
 <body>
-<h2>Новый пользователь</h2>
+<h2>Новый спортсмен</h2>
 <p></p>
 <form th:action="@{/add}" th:object="${newuser}" method="post">
     <table>
@@ -30,14 +30,14 @@
             </select></td>
         </tr>
         <tr>
-            <td>Телефон</td>
+            <td>Вид спорта</td>
             <td>:</td>
-            <td><input type="tel" th:field="*{phoneNo}"/></td>
+            <td><input type="text" th:field="*{sport}"/></td>
         </tr>
         <tr>
-            <td>E-mail</td>
+            <td>Зарплата</td>
             <td>:</td>
-            <td><input type="email" th:field="*{email}"/></td>
+            <td><input type="number" th:field="*{salary}"/></td>
         </tr>
     </table>
     <button type="submit" name="action" value="cancel">Отмена</button>

@@ -1,4 +1,4 @@
-package CRUD.Config;
+package web.config;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan(value = "CRUD")
-public class PersistenceConfig {
+@ComponentScan(value = "web")
+public class AppConfig {
 
     @Autowired
     private Environment env;
@@ -38,7 +38,7 @@ public class PersistenceConfig {
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        entityManagerFactoryBean.setPackagesToScan("CRUD.model");
+        entityManagerFactoryBean.setPackagesToScan("web.model");
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));

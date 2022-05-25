@@ -1,4 +1,4 @@
-package CRUD.model;
+package web.model;
 
 import javax.persistence.*;
 
@@ -15,9 +15,9 @@ public class User {
     @Column
     private Gender gender;
     @Column
-    private String phoneNo;
+    private String sport;
     @Column
-    private String email;
+    private int salary;
 
     public User() {
     }
@@ -28,19 +28,19 @@ public class User {
         this.gender = gender;
     }
 
-    public User(String firstName, String lastName, Gender gender, String phoneNo, String email) {
+    public User(String firstName, String lastName, Gender gender, String sport, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
-        this.phoneNo = phoneNo;
-        this.email = email;
+        this.sport = sport;
+        this.salary = salary;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,26 +68,26 @@ public class User {
         this.gender = gender;
     }
 
-    public String getPhoneNo() {
-        return phoneNo;
+    public String getSport() {
+        return sport;
     }
 
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    public void setSport(String sport) {
+        this.sport = sport;
     }
 
-    public String getEmail() {
-        return email;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     @Override
     public String toString() {
         return this.getId() + " " + this.getFirstName() + " " + this.getLastName() + " " + this.getGender()
-                + " " + this.getPhoneNo() + " " + this.getEmail();
+                + " " + this.getSport() + " " + this.getSalary();
     }
 
 }

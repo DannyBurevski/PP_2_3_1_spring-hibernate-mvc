@@ -3,10 +3,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>Athletes</title>
 </head>
 <body>
-<h2>Юзеры</h2>
+<h2>Спортсмены</h2>
 <a th:href="@{/}">На главную</a>
 <p></p>
 <table th:border="3">
@@ -15,8 +15,8 @@
         <th>Имя</th>
         <th>Фамилия</th>
         <th>Пол</th>
-        <th>Телефон</th>
-        <th>e-mail</th>
+        <th>Вид спорта</th>
+        <th>Зарплата</th>
         <th>Действие</th>
     </tr>
     <tr th:each = "user : ${usersList}">
@@ -24,8 +24,8 @@
         <td th:utext="${user.firstName}"></td>
         <td th:utext="${user.lastName}"></td>
         <td th:utext="${user.gender}"></td>
-        <td th:utext="${user.phoneNo}"></td>
-        <td th:utext="${user.email}"></td>
+        <td th:utext="${user.sport}"></td>
+        <td th:utext="${user.salary}"></td>
         <td>
             <a th:href="@{/edit/{userId}(userId=${user.id})}">Редактировать </a>
             <a th:href="@{/delete/{userId}(userId=${user.id})}">Удалить</a>
@@ -33,6 +33,6 @@
     </tr>
 </table>
 <p></p>
-<a th:href="@{/add}">Новый пользователь</a>
+<a th:href="@{/add}">Новый спортсмен</a>
 </body>
 </html>

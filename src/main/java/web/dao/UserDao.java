@@ -1,14 +1,14 @@
-package CRUD.service;
+package web.dao;
 
-import CRUD.model.User;
+import web.model.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserDao {
 
     void addUser(User user);
 
-    User getUser(long id);
+    User getUser(Long id);
 
     void updateUser(User user);
 

@@ -6,7 +6,7 @@
     <title>Delete user</title>
 </head>
 <body>
-<h2>Удалить пользователя?</h2>
+<h2>Удалить спортсмена?</h2>
 <p></p>
 <table>
     <tr>
@@ -30,14 +30,14 @@
         <td th:utext="${user.gender}"></td>
     </tr>
     <tr>
-        <td>Телефон</td>
+        <td>Вид спорта</td>
         <td>:</td>
-        <td th:utext="${user.phoneNo}"></td>
+        <td th:utext="${user.sport}"></td>
     </tr>
     <tr>
-        <td>E-mail</td>
+        <td>Зарплата</td>
         <td>:</td>
-        <td th:utext="${user.email}"></td>
+        <td th:utext="${user.salary}"></td>
     </tr>
 </table>
 <form th:action="@{/delete/{userId}(userId=${user.id})}" th:object="${user}" th:method="POST">

@@ -1,15 +1,15 @@
-package CRUD.web.Controllers;
+package web.controllers;
 
-import CRUD.model.Gender;
-import CRUD.model.User;
-import CRUD.service.UserService;
+import web.model.Gender;
+import web.model.User;
+import web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class userController {
+public class UserController {
 
     private UserService userService;
 

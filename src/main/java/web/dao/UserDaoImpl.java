@@ -1,14 +1,13 @@
-package CRUD.DAO;
+package web.dao;
 
-import CRUD.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import web.model.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Repository
-public class UserServiceDAOImpl implements UserServiceDAO {
+public class UserDaoImpl implements UserDao {
 
     private EntityManager entityManager;
 
