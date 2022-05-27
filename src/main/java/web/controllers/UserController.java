@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping("/")
 public class UserController {
 
     private UserService userService;
@@ -35,7 +36,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    @PutMapping(value = "/edit")
     public ModelAndView userEdit(@ModelAttribute("user") User user,
                                  @RequestParam(value = "action") String action) {
         ModelAndView modelAndView = new ModelAndView();
@@ -56,7 +57,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PostMapping(value = "/add")
     public ModelAndView userAdd(@ModelAttribute("user") User user,
                                 @RequestParam(value = "action") String action) {
         ModelAndView modelAndView = new ModelAndView();
@@ -75,7 +76,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delete/{userId}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/delete/{userId}")
     public ModelAndView userDelete(@ModelAttribute("user") User user,
                                    @ModelAttribute("userId") Long id,
                                    @RequestParam(value = "action") String action) {
